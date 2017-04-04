@@ -3,31 +3,34 @@
   <head>
     <meta charset="utf-8"/>
     <title>Quiz</title>
-    <link rel="stylesheet" href="main.css">
+    <style>
+      body {
+        width: 80%;
+        margin: 0 auto;
+      }
+      ul {
+        list-style-type: upper-alpha;
+      }
+    </style>
   </head>
   <body>
-    <h1>Constructor Quiz</h1>
-    <div class="handlebars-demo"></div>
+    <h1>Quiz</h1>
+    <section id="quiz"></section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-
-    <script id="quiz-question" type="text/x-handlebars-template">
-      <div class="entry">
-        <div class="content">
-          <div class="info">
-            <h2>1. {{main}}</h2>
-            <form>
-              <ul>
-                {{#each choices}}<li><input type="radio">{{this}}{{/each}}</li>
-              </ul>
-              <input type="submit" value="Submit"/>
-            </form>
-            <p class="answer">{{answer}}</p>
-            <span class="results"></span>
-          </div>
-        </div>
-      </div>
+    <script id="question" type="text/x-handlebars-template">
+      <article>
+        <h1>Question</h1>
+        <strong>{{text}}</strong>
+        <ul>
+          {{#each choices}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        <span class="answer"></span>
+      </article>
     </script>
-  <script src="index.js"></script>
+    <script src="./index.js"></script>
   </body>
+
 </html>

@@ -1,48 +1,25 @@
-function Question (text, list_of_choices, correct_answer) {
-  this.main = text;
-  this.choices = list_of_choices;
-  this.answer = correct_answer;
+function Question (text, choices, answer) {
+  this.text = text;
+  this.choices = choices;
+  this.answer = answer;
 
-//come back to below section
-  this.userChoice = '';
-  this.isCorrect = function () {
-    if (this.userChoice === this.answer){
-      return "Correct!"
-    } else{
-      return "No Sorry!"
+  this.isCorrect = function (event) {
+    let li = event.target;
+    let answerSpace = li.parentElement.nextElementSibling;
+    if (li.textContent === this.answer) {
+      answerSpace.textContent = "Yup";
+    } else {
+      answerSpace.textContent = "Nope";
     }
   }
+  this.display = function () {
+    let source = document.querySelector('#question').innerHTML;
+    let template = Handlebars.compile(source);
+    let html = template(this);
+    document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
+    document.querySelector('#quiz article:last-of-type ul').addEventListener('click', this.isCorrect.bind(this));
+  }
 }
-
-
-let jsChoices = ['Bacon', 'Pickles', 'Pizza', 'A programming language'];
-
-let firstQuestion = new Question("What is Javascript?", jsChoices, 'A programming language') //placeholder question
-
-
-
-//printing to html
-
-let source = document.querySelector("#quiz-question").innerHTML;
-let template = Handlebars.compile(source);
-let html = template(firstQuestion);
-let destination = document.querySelector('.handlebars-demo');
-destination.innerHTML = html;
-
-
-
-
-
-function rightAnswer (event) {
-  event.preventDefault();
-  console.log('ok');
-  let answer = document.querySelector('radio'); //not able to select individual answers with how it's set up in html
-  //let crust = document.querySelector('.results');
-  //priceField.textContent
-  console.log(answer)
-
-}
-
-
-let userClick = document.querySelector('form');
-userClick.addEventListener("submit", rightAnswer)
+let q1 = new Question('What is the JS term for a sequence of characters', ['a word', 'a string', 'a sequence', 'an array'], 'a string');
+let q2 = new Question('What is the JS term for elements in an ordered collection', ['a word', 'a string', 'a sequence', 'an array'], 'an array');
+[q1, q2].forEach(question => question.display());
