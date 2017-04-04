@@ -15,10 +15,9 @@
   </head>
   <body>
     <h1>Quiz</h1>
-    <section id="quiz"></section>
-
+    <section id="quiz"> </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-    <script id="question" type="text/x-handlebars-template">
+    <script id="multipleChoice" type="text/x-handlebars-template">
       <article>
         <h1>Question</h1>
         <strong>{{text}}</strong>
@@ -30,7 +29,16 @@
         <span class="answer"></span>
       </article>
     </script>
+    <script id="shortAnswer" type="text/x-handlebars-template">
+
+        <strong>{{text}}</strong>
+        <form>
+          <input type="text">
+          <input type="submit" value="Submit">
+          <span class="answer"></span>
+        </form>
+
+    </script>
     <script src="./index.js"></script>
   </body>
-
 </html>
