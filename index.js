@@ -39,9 +39,11 @@ function ShortAnswerQuestion (text, answer, blank) {
   this.blank = blank;
 
   this.isCorrect = function (event) {
+    let test = document.getElementById("text").value;
+    console.log(test);
     let li = event.target;
-    let answerSpace = li.parentElement.nextElementSibling;
-    if (li.textContent === this.answer) {
+    let answerSpace = li.nextElementSibling;
+    if (test === this.answer) {
       answerSpace.textContent = "Yup";
     } else {
       answerSpace.textContent = "Nope";
@@ -56,7 +58,7 @@ function ShortAnswerQuestion (text, answer, blank) {
     let template = Handlebars.compile(source);
     let html = template(this);
     document.querySelector('#quiz').insertAdjacentHTML('beforeend', html);
-    //document.querySelector('#quiz ul').addEventListener('click', this.isCorrect.bind(this));
+    document.querySelector('#submit').addEventListener('click', this.isCorrect.bind(this));
 }
 
 
