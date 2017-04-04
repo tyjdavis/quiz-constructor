@@ -31,10 +31,14 @@ destination.innerHTML = html;
 
 
 
+
+
 function rightAnswer (event) {
   event.preventDefault();
   console.log('ok');
-  let answer = document.querySelector('radio'); //not able to select individual answer with how it's set up in html
+  let answer = document.querySelector('radio'); //not able to select individual answers with how it's set up in html
+  //let crust = document.querySelector('.results');
+  //priceField.textContent
   console.log(answer)
 
 }
