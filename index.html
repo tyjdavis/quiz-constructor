@@ -20,21 +20,20 @@
     <script id="multipleChoice" type="text/x-handlebars-template">
       <article>
         <h1>Question</h1>
-        <strong>{{text}}</strong>
+        <h3><strong>{{text}}</strong></h3>
         <ul>
           {{#each choices}}
             <li>{{this}}</li>
           {{/each}}
         </ul>
-        <span class="answer"></span>
+        <div class="answer"></div>
       </article>
     </script>
-
     <script id="shortAnswer" type="text/x-handlebars-template">
-        <strong>{{text}}</strong>
-          <input id="text" type="text">
+        <h3><strong>{{text}}</strong></h3>
+          <p><input id="text" type="text"></p>
           <button id="submit">Submit</button>
-          <span class="answer"></span>
+          <div class="answer"></div>
     </script>
     <script src="./index.js"></script>
   </body>
