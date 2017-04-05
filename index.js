@@ -21,9 +21,9 @@ function MultipleChoiceQuestion (text, answer, choices) {
     let li = event.target;
     let answerSpace = li.parentElement.nextElementSibling;
     if (li.textContent === this.answer) {
-      answerSpace.textContent = "Yup";
+      answerSpace.textContent = "Correct";
     } else {
-      answerSpace.textContent = "Try again...";
+      answerSpace.textContent = "Wrong";
     }
   }
 
@@ -123,9 +123,9 @@ let form = document.querySelector('form');
 form.addEventListener('submit', function(event){
   event.preventDefault();
   let order = {
-    orderName: form.querySelector('input[name=firstName]').value,
-    theMeal: form.querySelector('input[name=food]').value,
-    soda: form.querySelector('input[name=drink]').value
+    userName: form.querySelector('input[name=firstName]').value,
+    score: form.querySelector('input[name=score]').value,
+    //soda: form.querySelector('input[name=drink]').value
   }
   fetch(url, fetchInit(order))
   .then(response => response.json())
