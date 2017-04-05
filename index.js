@@ -21,7 +21,7 @@ function MultipleChoiceQuestion (text, answer, choices) {
     if (li.textContent === this.answer) {
       answerSpace.textContent = "Yup";
     } else {
-      answerSpace.textContent = "Nope";
+      answerSpace.textContent = "Try again...";
     }
   }
 
@@ -54,7 +54,7 @@ ShortAnswerQuestion.prototype.isCorrect = function (event) {
   if (space === this.answer) {
     answerSpace.textContent = "Yup";
   } else {
-    answerSpace.textContent = "Nope";
+    answerSpace.textContent = "Try again...";
   }
 }
 
@@ -72,6 +72,6 @@ ShortAnswerQuestion.prototype.display = function () {
 
 //new constructors
 
-let q1 = new MultipleChoiceQuestion('1. Where is the best place to insert the JavaScript script tag in html?','the bottom of the <body> section', ['the bottom of <head> section', 'the bottom of the <body> section', 'the <title> section', 'does not matter']);
-let q2 = new ShortAnswerQuestion('2. What is your favorite thing about JavaScript?','nothing');
+let q1 = new MultipleChoiceQuestion('1. Where is the best place to insert the JavaScript <script> tag in your html?','the bottom of the <body> section', ['the bottom of <head> section', 'the bottom of the <body> section', 'the <title> section', 'does not matter']);
+let q2 = new ShortAnswerQuestion('2. How many days did it take Brendan Eich to create JavaScript in 1995?','10');
 [q1, q2].forEach(question => question.display());
