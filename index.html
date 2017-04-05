@@ -19,7 +19,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
     <script id="multipleChoice" type="text/x-handlebars-template">
       <article>
-        <h1>Questions</h1>
         <h3><strong>{{text}}</strong></h3>
         <ul>
           {{#each choices}}
@@ -29,12 +28,18 @@
         <div class="answer"></div>
       </article>
     </script>
-    <script id="shortAnswer" type="text/x-handlebars-template">
+    <!-- <script id="shortAnswer" type="text/x-handlebars-template">
         <h3><strong>{{text}}</strong></h3>
           <p><input id="text" type="text"></p>
           <button id="submit">Submit</button>
           <div class="answer"></div>
-    </script>
+    </script>-->
+    <form>
+      <input name="firstName" placeholder="Username">
+      <input name="food" placeholder="meal">
+      <input name="drink" placeholder="beverage">
+      <button>Submit</button>
+    </form>
     <script src="./index.js"></script>
   </body>
 </html>
