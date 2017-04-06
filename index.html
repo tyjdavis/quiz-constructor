@@ -3,15 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>Quiz</title>
-    <style>
-      body {
-        width: 80%;
-        margin: 0 auto;
-      }
-      ul {
-        list-style-type: upper-alpha;
-      }
-    </style>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <h1>Quiz</h1>
@@ -34,10 +26,9 @@
           <button id="submit">Submit</button>
           <div class="answer"></div>
     </script>-->
-    <div class="yourScore"></div>
+    <section class="score"><strong>Your Current Score: <span class="yourScore"></span><span>%</span></strong></section>
     <form>
       <input name="firstName" placeholder="Username">
-      <input name="score" placeholder="Score">
       <button>Submit</button>
     </form>
     <script src="./index.js"></script>
