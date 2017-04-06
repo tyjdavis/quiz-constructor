@@ -16,16 +16,22 @@ function MultipleChoiceQuestion (text, answer, choices) {
 }
 
 //isCorrect prototype
+let score = 100;
 
   MultipleChoiceQuestion.prototype.isCorrect = function (event) {
     let li = event.target;
     let answerSpace = li.parentElement.nextElementSibling;
+    let scorespace = document.querySelector('.yourScore');
     if (li.textContent === this.answer) {
       answerSpace.textContent = "Correct";
+      scorespace.textContent = score;
     } else {
       answerSpace.textContent = "Wrong";
+      score -= 10;
+      scorespace.textContent = score;
     }
   }
+
 
 //display prototype
 
@@ -37,6 +43,24 @@ function MultipleChoiceQuestion (text, answer, choices) {
     document.querySelector('#quiz article:last-of-type ul').addEventListener('click', this.isCorrect.bind(this));
   }
 
+
+//score function
+
+  // function getScore (event) {
+  //   let score = 0;
+  //   let li = event.target;
+  //   let scoreSpace = li.nextElementSibling;
+  //   let result = document.querySelector('.answer');
+  //   if (result.textContent === "Correct") {
+  //     scoreSpace.textContent = scoreSpace.textContent + 10;
+  //   }
+  // else if (result.textContent === "Wrong"){
+  //     scoreSpace.textContent -= 10;
+  //   }
+  // }
+  //
+  // let submitScore = document.querySelector('#submitAnswers');
+  //   submitScore.addEventListener('click', getScore);
 
 
 /*
@@ -91,7 +115,7 @@ fetch('https://opentdb.com/api.php?amount=10&category=20&difficulty=easy')
 
 
 function getQuestionsFromAPI (arr) {
-return arr.map(function (object) {   //object is the elements within the array
+return arr.map(function (object) {   //object is the individual elements within the array labeled as 'objects'
   let choices = object.incorrect_answers;
   choices.push(object.correct_answer);
   let newQuestion = new MultipleChoiceQuestion(object.question, object.correct_answer, choices)
@@ -102,7 +126,6 @@ return arr.map(function (object) {   //object is the elements within the array
 function displayQuestion (arr) {
   arr.forEach(question => question.display());
 }
-
 
 
 
@@ -125,7 +148,6 @@ form.addEventListener('submit', function(event){
   let order = {
     userName: form.querySelector('input[name=firstName]').value,
     score: form.querySelector('input[name=score]').value,
-    //soda: form.querySelector('input[name=drink]').value
   }
   fetch(url, fetchInit(order))
   .then(response => response.json())
